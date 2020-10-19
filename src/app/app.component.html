@@ -174,8 +174,8 @@
     border-radius: 6px;
     padding-top: 45px;
     margin-top: 8px;
-    overflow: hidden;
-    background-color: rgb(15, 15, 16);
+    overflow: auto;
+    background-color: rgb(231, 231, 243);
   }
 
   .terminal::before {
@@ -378,7 +378,7 @@
     <div class="card card-small" (click)="selection.value = 'component'" tabindex="0">
         <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
 
-      <span>New Component</span>
+      <span><a [routerLink]="['/table']" (click)="router.navigate(['/table'])"></a>column resize</span>
     </div>
 
     <div class="card card-small" (click)="selection.value = 'material'" tabindex="0">
@@ -413,13 +413,9 @@
   </div>
 
   <!-- Terminal -->
-  <div class="terminal" [ngSwitch]="selection.value">
-      <pre *ngSwitchDefault>ng generate component xyz</pre>
-      <pre *ngSwitchCase="'material'">ng add @angular/material</pre>
-      <pre *ngSwitchCase="'pwa'">ng add @angular/pwa</pre>
-      <pre *ngSwitchCase="'dependency'">ng add _____</pre>
-      <pre *ngSwitchCase="'test'">ng test</pre>
-      <pre *ngSwitchCase="'build'">ng build --prod</pre>
+  <div class="terminal" >
+      
+    <app-table-resize></app-table-resize>
   </div>
 
   <!-- Links -->
@@ -521,6 +517,8 @@
 
 </div>
 
+<router-outlet></router-outlet>
+
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
 <!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
@@ -530,5 +528,3 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
 
-
-<router-outlet></router-outlet>
